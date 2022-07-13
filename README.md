@@ -22,10 +22,17 @@ pandas
 
 biopython
 
+### Installation 
+
+```
+git clone https://github.com/BioInfoData/pileup_stranded
+cd pileup_stranded
+pip install -r requirements.txt
+```
 ### Usage:
 
 ```
-python pileup.py
+python pileup_multi.py --help
 
 options:                                                                                                                             
   -h, --help            show this help message and exit                                                                              
