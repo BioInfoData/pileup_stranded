@@ -6,9 +6,11 @@ The current tool provide a site specific pileup with the following advantages co
 
 1. Using mutliproccesing to decreas the time of analysis.
 
-2. Allow selection of specific nucleotides to include in the analysis in order to decres the runing time and size of output files.
+2. Allow strand specific pileup for RNA-seq data.
 
-3. Allow filtering of the results based on coverate, muation rate or number of mutated reads.
+3. Allow selection of specific nucleotides to include in the analysis in order to decres the runing time and size of output files.
+
+4. Allow filtering of the results based on coverate, muation rate or number of mutated reads.
 
 ### Requirements:
 
