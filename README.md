@@ -41,22 +41,26 @@ For pileup ignoring strand use the **pileup_multi.py** tool
 with following parameters:
 
 ```
-python pileup_multi.py --help
+usage: pileup_multi.py --bam BAM --genome GENOME --out_file OUT_FILE 
 
-options:                                                                                                                             
-  -h, --help            show this help message and exit                                                                              
-  --bam BAM             path to bam file                                                                                             
-  --genome GENOME       fasta file of the genome                                                                                     
-  --sites_file SITES_FILE                                                                                                            
-                        list of sites to check                                                                                       
-  --out_file OUT_FILE   name of output file                                                                                          
-  --nt NT               nucleotides to include in pileup. Default is all nucleotides ("aAgGcCtT")                                    
-  --min_coverage MIN_COVERAGE                                                                                                        
-                        min coverage.Default is 0.                                                                                   
-  --min_mutation MIN_MUTATION                                                                                                        
-                        min mutation rate.Default is 0.                                                                              
+options:
+  -h, --help            show this help message and exit
+  --bam BAM             path to bam file
+  --genome GENOME       fasta file of the genome
+  --sites_file SITES_FILE
+                        List of sites to check. If not provided, the script
+                        will run on all genome
+  --out_file OUT_FILE   name of output file
+  --nt NT               nucleotides to include in pileup. Default is all
+                        nucleotides ("aAgGcCtT")
+  --min_coverage MIN_COVERAGE
+                        min coverage.Default is 1.
+  --min_mutation MIN_MUTATION
+                        min mutation rate.Default is 0.
   --min_nonRef MIN_NONREF
                         min number of mutated reads.Default is 0.
+  --num_threads NUM_THREADS
+                        number of threads to use
 
 ```
 
@@ -64,13 +68,59 @@ For example, to pileup the test bam file in the folder **test_pileup** with 5 pr
 use the following command (*hg19.fa* file should be downloaded form UCSC):
 
 ```commandline
-python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome *hg19.fa* --num_threads 5
+python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome hg19.fa --num_threads 5
 
 ```
 
 To pileup the test bam file in the folder **test_pileup** but only reporting base G positions with min coverage of 10 reads, min mutation rate of 50% and min 3 mutated reads at the position use the following command:
 
 ```
-python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome *hg19.fa* --out_file test_pileup/out_pileup_sites.txt --num_threads 5 --min_coverage 5 --min_nonRef 3 --min_mutation 0.5 --nt Gg
+python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome hg19.fa --out_file test_pileup/out_pileup_sites.txt --num_threads 5 --min_coverage 5 --min_nonRef 3 --min_mutation 0.5 --nt Gg
+
+```
+
+#### Strand-specific pileup
+
+For strand-specific pileup use the **stranded_pileup.py** tool 
+with following parameters:
+
+```
+usage: stranded_pileup.py --bam BAM --genome GENOME --out_file OUT_FILE
+                          --out_folder OUT_FOLDER --mode MODE
+
+options:
+  -h, --help            show this help message and exit
+  --bam BAM             path to bam file
+  --genome GENOME       fasta file of the genome
+  --out_file OUT_FILE   output file name (WITHOUT path)
+  --out_folder OUT_FOLDER
+                        output folder path to write output files
+  --mode MODE           should be "genome" or "sites"
+  --pos_strand POS_STRAND
+                        Reads on positive strand must be "R1" or "R2"Default
+                        is "R2"
+  --chr_list CHR_LIST   File of chr length. if mode == "genome".Not required.
+                        Otherwise will calculate size
+  --sites_file_pos SITES_FILE_POS
+                        List of sites for pileup on positive strand. Only if
+                        mode == "sites"
+  --sites_file_neg SITES_FILE_NEG
+                        List of sites for pileup on positive strand. Only if
+                        mode == "sites"
+  --make_bam MAKE_BAM   If split bam not exists set this param to "False".
+                        Default is "True"
+  --min_coverage MIN_COVERAGE
+                        min coverage
+  --min_mutation MIN_MUTATION
+                        min mutation rate
+  --min_nonRef MIN_NONREF
+                        min number of mutated reads
+  --num_threads NUM_THREADS
+                        number of threads to use
+  --nt_pos NT_POS       nucleotides to include in pileup - positive strand.
+                        Default is all nucleotides ("aAgGcCtT")
+  --nt_neg NT_NEG       nucleotides to include in pileup - negative strand.
+                        Default is all nucleotides ("aAgGcCtT")
+
 
 ```
