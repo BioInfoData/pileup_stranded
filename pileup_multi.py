@@ -317,26 +317,3 @@ def parse_user_data():
 if __name__ == '__main__':
     parse_user_data()
 
-
-'''
-
-############## test code ##############
-
-python pileup_multi.py --bam test_pileup/sampled.bam --genome /nadata/users/reut/reference/GRCh37/hg19.fa --out_file test_pileup/out_pileup.txt --num_threads 10 --min_coverage 5 --min_nonRef 3 --min_mutation 0.5 --nt CcGg
-
-python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome /nadata/users/reut/reference/GRCh37/hg19.fa --out_file test_pileup/out_pileup_sites.txt --num_threads 10 --min_coverage 5 --min_nonRef 3 --min_mutation 0.5 --nt Gg
-
-######################################
-
-
-### for ASO ASE
-bam = "/nadata/users/reut/raw_data/ASO_runNOVA4/bam_sorted/Liora_SPH_19_S19_Aligned_onlyPaired_collapsed_sorted.bam"
-genome = '/nadata/users/reut/reference/hg38/STAR_human/hg38_ucsc.fa'
-nt = "aAgGcCtT"
-sites_file = "/nadata/users/reut/raw_data/ASO_runNOVA4/test_ASE/SNP_sites.txt"
-out_file = "/nadata/users/reut/raw_data/ASO_runNOVA4/test_ASE/res.pileup_res.txt"
-
-main_make_pileup_sites(bam, genome,  sites_file ,nt, out_file ,
-                           min_coverage=0, min_mutation=0, min_nonRef=0,
-                           writeToFile =True)
-'''
