@@ -152,39 +152,3 @@ def parse_user_data():
 
 if __name__ == '__main__':
     parse_user_data()
-
-'''
-############## test code ##############
-
-#
-python stranded_pileup.py --bam test_pileup/sampled.bam --genome /nadata/users/reut/reference/GRCh37/hg19.fa \
-  --out_file out_pileup_stranded.txt --out_folder test_pileup/ --mode genome --min_coverage 10 --min_nonRef 4 \
-  --min_mutation 0.2 --num_threads 5 --nt_pos Gg --nt_neg Cc
-
-
-python stranded_pileup.py --bam test_pileup/sampled.bam --genome /nadata/users/reut/reference/GRCh37/hg19.fa \
- --out_file out_pileup_stranded.txt --out_folder test_pileup/ --mode sites --sites_file_pos test_pileup/sites_file.txt \
- --sites_file_neg test_pileup/sites_file.txt --min_coverage 10 --min_nonRef 4 -\
- -min_mutation 0.2 --num_threads 5 --nt_pos Gg --nt_neg Cc
-
-
-#####################################
-'''
-
-'''
-
-bam = "/nadata/users/reut/raw_data/ASO_runNOVA4/bam_sorted/Liora_SPH_19_S19_Aligned_onlyPaired_collapsed_sorted.bam"
-genome = '/nadata/users/reut/reference/hg38/STAR_human/hg38_ucsc.fa'
-sites_file_pos =  "/nadata/users/reut/raw_data/ASO_runNOVA4/test_ASE/SNP_sites.txt"
-sites_file_neg = "/nadata/users/reut/raw_data/ASO_runNOVA4/test_ASE/SNP_sites.txt"
-out_folder = "/nadata/users/reut/raw_data/ASO_runNOVA4/test_ASE/"
-out_file = "strand_speciifc"
-strand_specific_pileup(bam, genome, out_file, out_folder, writeOutFile = True,
-                           min_coverage = 0, min_mutation = 0,  min_nonRef =0,
-                           nt_pos="aA", nt_neg = "tT",pos_strand = "R2",
-                           make_bam = False,
-                           mode = "sites",
-                           chr_list = None,
-                           sites_file_pos = sites_file_pos, sites_file_neg = sites_file_neg)
-
-'''
