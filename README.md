@@ -35,9 +35,9 @@ cd pileup_stranded
 pip install -r requirements.txt
 ```
 
-### Usage:
+## Usage:
 
-#### Non-stranded data
+## Non-stranded data
 
 For pileup ignoring strand use the **pileup_multi.py** tool 
 with following parameters:
@@ -99,7 +99,7 @@ python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup
 
 ```
 
-#### Strand-specific pileup
+## Strand-specific pileup
 
 For strand-specific pileup use the **stranded_pileup.py** tool 
 with following parameters:
