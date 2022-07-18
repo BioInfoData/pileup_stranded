@@ -66,7 +66,22 @@ options:
 
 ```
 
-For example, to pileup the test bam file in the folder **test_pileup** only on sites listed at **sites_file.txt** using 5 processors
+It is optional to pileup all over the genome, or only on specific list of sites. In this case the user should give as input a site sile with the following format:
+**chr \t mut_site**
+
+For example:
+
+```
+chr   mut_site
+chrY  3921370
+chrY  3921400
+chrX  5734067
+chr1  175493476
+```
+
+#### Examples for non-starnded usage:
+
+To pileup the test bam file in the folder **test_pileup** only on sites listed at **sites_file.txt** using 5 processors
 use the following command (*hg19.fa* file should be downloaded form UCSC):
 
 ```commandline
@@ -129,8 +144,9 @@ options:
 
 
 ```
+#### Examples for starnded usage:
 
-For example, to pileup the test bam file in the folder **test_pileup** using 5 processors, reporting only G bases in the positive strand and only C bases at the negative strand and filtering for sites with min mutation rate of 20%, min coverage of 10 reads and min mutated reads of 4 reads, use this command:
+To pileup the test bam file in the folder **test_pileup** using 5 processors, reporting only G bases in the positive strand and only C bases at the negative strand and filtering for sites with min mutation rate of 20%, min coverage of 10 reads and min mutated reads of 4 reads, use this command:
 
 ```
 python stranded_pileup.py --bam test_pileup/sampled.bam --genome hg19.fa \
