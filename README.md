@@ -14,13 +14,16 @@ The current tool provide a site specific pileup with the following advantages co
 
 ### Requirements:
 
-Python3
+* Python3
+* pip
+* samtools
 
-pysam
 
-pandas
+#### python moduls (in requirements.txt):
 
-biopython
+* pysam
+* pandas
+* biopython
 
 ### Installation 
 
@@ -29,7 +32,13 @@ git clone https://github.com/BioInfoData/pileup_stranded
 cd pileup_stranded
 pip install -r requirements.txt
 ```
+
 ### Usage:
+
+#### Non-stranded data
+
+For pileup ignoring strand use the **pileup_multi.py** tool 
+with following parameters:
 
 ```
 python pileup_multi.py --help
@@ -51,3 +60,17 @@ options:
 
 ```
 
+For example, to pileup the test bam file in the folder **test_pileup** with 5 processors
+use the following command (*hg19.fa* file should be downloaded form UCSC):
+
+```commandline
+python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome *hg19.fa* --num_threads 5
+
+```
+
+To pileup the test bam file in the folder **test_pileup** but only reporting base G positions with min coverage of 10 reads, min mutation rate of 50% and min 3 mutated reads at the position use the following command:
+
+```
+python pileup_multi.py --sites_file test_pileup/sites_file.txt --bam test_pileup/sampled.bam --genome *hg19.fa* --out_file test_pileup/out_pileup_sites.txt --num_threads 5 --min_coverage 5 --min_nonRef 3 --min_mutation 0.5 --nt Gg
+
+```
